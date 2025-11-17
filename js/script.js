@@ -8,7 +8,7 @@ if (exploreBtn) {
 
 const ann = document.getElementById('announcements');
 if (ann) {
-  ann.textContent = 'Dining Hall Changes Thanksgiving • RA Applications 2026 Open • Chapel 10:30AM Wednesday';
+  ann.textContent = 'Dining Hall Time Changes • RA Applications 2026 Open • Chapel 10:30AM Wednesday';
 }
 
 const eventsList = document.getElementById('eventsList');
