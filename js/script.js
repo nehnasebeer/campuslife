@@ -8,7 +8,7 @@ if (exploreBtn) {
 
 const ann = document.getElementById('announcements');
 if (ann) {
-  ann.textContent = 'Registration opens Monday • Library closed Sunday • Chapel 11AM';
+  ann.textContent = 'Registration opens Monday • Library closed Sunday • Chapel 10:30AM Wednesday';
 }
 
 const eventsList = document.getElementById('eventsList');
