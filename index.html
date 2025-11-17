@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Campus Life — Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">CampusLife</a>
+    <div>
+      <a class="nav-link d-inline" href="index.html">Home</a>
+      <a class="nav-link d-inline" href="events.html">Events</a>
+      <a class="nav-link d-inline" href="dining.html">Dining</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <section class="p-4 rounded-3 bg-body-secondary mb-4">
+    <h1 class="h3 mb-2">Welcome to Campus Life</h1>
+    <p class="mb-3">Quick access to events, dining, and campus updates.</p>
+    <button id="exploreBtn" class="btn btn-primary">Explore now</button>
+  </section>
+
+  <section class="row g-3">
+    <div class="col-md-4">
+      <a class="card h-100 text-decoration-none" href="events.html">
+        <div class="card-body"><h2 class="h5">Events</h2><p class="text-muted">See what’s happening.</p></div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a class="card h-100 text-decoration-none" href="dining.html">
+        <div class="card-body"><h2 class="h5">Dining</h2><p class="text-muted">What’s open right now.</p></div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="h5">Announcements (API)</h2>
+          <p id="announcements" class="text-muted">Loading campus updates…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-top py-3 text-center text-muted">© 2025 CampusLife</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
