@@ -8,15 +8,15 @@ if (exploreBtn) {
 
 const ann = document.getElementById('announcements');
 if (ann) {
-  ann.textContent = 'Registration opens Monday • Library closed Sunday • Chapel 10:30AM Wednesday';
+  ann.textContent = 'Dining Hall Changes Thanksgiving • RA Applications 2026 Open • Chapel 10:30AM Wednesday';
 }
 
 const eventsList = document.getElementById('eventsList');
 if (eventsList) {
   const sampleEvents = [
-    { title: 'Worship Night', when: 'today', desc: 'Student Center 7pm' },
-    { title: 'Basketball Game', when: 'week', desc: 'Gym Friday 6pm' },
-    { title: 'Career Fair', when: 'week', desc: 'Hall A Thu 1–4pm' },
+    { title: 'Worship Night', when: 'today', desc: 'Fri 6pm @ University Ministries (JC123)' },
+    { title: ' JV Mens Basketball NPU vs Elmhurst', when: 'week', desc: 'Mon 7pm @ Carlson Tower' },
+    { title: 'Career Fair', when: 'week', desc: 'Thu 1pm-4pm @ Hamming Hall' },
   ];
 
   function drawEvents(filter='all') {
@@ -46,10 +46,11 @@ if (eventsList) {
 const diningGrid = document.getElementById('diningGrid');
 if (diningGrid) {
   const halls = [
-    { name: 'South Hall', hours: '7am–9pm', open: true },
-    { name: 'North Cafe', hours: '8am–3pm', open: false },
-    { name: 'Union Food Court', hours: '11am–8pm', open: true },
-    { name: 'Library Kiosk', hours: '9am–2pm', open: false },
+    { name: 'Dinner @ Dining Hall', hours: '5pm–7pm', open: false },
+    { name: 'Viking Market @ Carlson Tower', hours: '8am–10pm', open: true },
+    { name: '1891 Bread Co.', hours: '8am–7pm', open: true },
+    { name: 'Lunch @ Dining Hall', hours: '11am–1:30pm', open: true },
+    { name: 'Breakfast @ Dining Hall', hours: '7am–9am', open: false },
   ];
 
   function drawDining(show='all') {
