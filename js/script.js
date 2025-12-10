@@ -1,22 +1,21 @@
 // --- Random Bible verse (Quote of the Day) ---
-const quoteEl = document.getElementById('quoteText');
-if (quoteEl) {
-  async function loadRandomVerse() {
-    try {
-      const response = await fetch('https://bible-api.com/data/web/random');
-      const data = await response.json();
-      const verse = data.random_verse;
+async function loadBibleVerse() {
+  const quoteEl = document.getElementById("quoteText");
+  if (!quoteEl) return;
 
-      // Build "text — Book chapter:verse"
-      const reference = `${verse.book} ${verse.chapter}:${verse.verse}`;
-      quoteEl.textContent = `${verse.text.trim()} — ${reference}`;
-    } catch (err) {
-      console.error('Error fetching verse:', err);
-      quoteEl.textContent = 'Could not load a verse right now. Please try again later.';
-    }
+  try {
+    const res = await fetch("https://labs.bible.org/api/?passage=random&type=json");
+    const data = await res.json();
+
+    const verse = data[0];
+    quoteEl.textContent = `${verse.text} — ${verse.bookname} ${verse.chapter}:${verse.verse}`;
+  } catch (error) {
+    quoteEl.textContent = "Could not load verse right now. Please try again later.";
   }
+}
 
-  loadRandomVerse();
+loadBibleVerse();
+
 }
 
 // --- Home: Explore button goes to Events page ---
