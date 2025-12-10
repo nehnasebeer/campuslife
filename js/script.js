@@ -10,7 +10,7 @@ async function loadBibleVerse() {
     const verse = data[0];
     quoteEl.textContent = `${verse.text} — ${verse.bookname} ${verse.chapter}:${verse.verse}`;
   } catch (error) {
-    quoteEl.textContent = "Could not load verse right now. Please try again later.";
+    quoteEl.textContent = "Could not load verse right now. Please try again.";
   }
 }
 
