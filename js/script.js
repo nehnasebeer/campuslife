@@ -1,4 +1,3 @@
-
 const exploreBtn = document.getElementById('exploreBtn');
 if (exploreBtn) {
   exploreBtn.addEventListener('click', () => {
@@ -19,10 +18,10 @@ if (eventsList) {
     { title: 'Career Fair', when: 'week', desc: 'Thu 1pm-4pm @ Hamming Hall' },
   ];
 
-  function drawEvents(filter='all') {
+  function drawEvents(filter = 'all') {
     eventsList.innerHTML = '';
     sampleEvents
-      .filter(e => filter==='all' ? true : e.when===filter)
+      .filter(e => filter === 'all' ? true : e.when === filter)
       .forEach(e => {
         eventsList.innerHTML += `
           <div class="col-md-4">
@@ -53,10 +52,10 @@ if (diningGrid) {
     { name: 'Breakfast @ Dining Hall', hours: '7am–9am', open: false },
   ];
 
-  function drawDining(show='all') {
+  function drawDining(show = 'all') {
     diningGrid.innerHTML = '';
     halls
-      .filter(h => show==='all' ? true : h.open)
+      .filter(h => show === 'all' ? true : h.open)
       .forEach(h => {
         diningGrid.innerHTML += `
           <div class="col-md-6">
@@ -64,8 +63,8 @@ if (diningGrid) {
               <div class="card-body">
                 <h2 class="h5 mb-1">${h.name}</h2>
                 <p class="text-muted mb-2">Hours: ${h.hours}</p>
-                <span class="badge ${h.open?'text-bg-success':'text-bg-secondary'}">
-                  ${h.open?'Open':'Closed'}
+                <span class="badge ${h.open ? 'text-bg-success' : 'text-bg-secondary'}">
+                  ${h.open ? 'Open' : 'Closed'}
                 </span>
                 <button class="btn btn-sm btn-outline-primary float-end">View Menu</button>
               </div>
@@ -80,4 +79,19 @@ if (diningGrid) {
   });
 }
 
+// -------- External API: Quote of the Day --------
+const quoteEl = document.getElementById('quoteText');
+if (quoteEl) {
+  async function loadQuote() {
+    try {
+      const res = await fetch('https://api.quotable.io/random');
+      const data = await res.json();
+      quoteEl.textContent = `"${data.content}" — ${data.author}`;
+    } catch (err) {
+      quoteEl.textContent = 'Could not load quote right now. Please try again later.';
+      console.error('Quote API error:', err);
+    }
+  }
 
+  loadQuote();
+}
