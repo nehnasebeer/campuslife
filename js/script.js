@@ -1,3 +1,25 @@
+// --- Random Bible verse (Quote of the Day) ---
+const quoteEl = document.getElementById('quoteText');
+if (quoteEl) {
+  async function loadRandomVerse() {
+    try {
+      const response = await fetch('https://bible-api.com/data/web/random');
+      const data = await response.json();
+      const verse = data.random_verse;
+
+      // Build "text — Book chapter:verse"
+      const reference = `${verse.book} ${verse.chapter}:${verse.verse}`;
+      quoteEl.textContent = `${verse.text.trim()} — ${reference}`;
+    } catch (err) {
+      console.error('Error fetching verse:', err);
+      quoteEl.textContent = 'Could not load a verse right now. Please try again later.';
+    }
+  }
+
+  loadRandomVerse();
+}
+
+// --- Home: Explore button goes to Events page ---
 const exploreBtn = document.getElementById('exploreBtn');
 if (exploreBtn) {
   exploreBtn.addEventListener('click', () => {
@@ -5,17 +27,19 @@ if (exploreBtn) {
   });
 }
 
+// --- Home: Announcements text ---
 const ann = document.getElementById('announcements');
 if (ann) {
   ann.textContent = 'Dining Hall Time Changes • RA Applications 2026 Open • Chapel 10:30AM Wednesday';
 }
 
+// --- Events page: sample events + filters ---
 const eventsList = document.getElementById('eventsList');
 if (eventsList) {
   const sampleEvents = [
     { title: 'Worship Night', when: 'today', desc: 'Fri 6pm @ University Ministries (JC123)' },
-    { title: ' JV Mens Basketball NPU vs Elmhurst', when: 'week', desc: 'Mon 7pm @ Carlson Tower' },
-    { title: 'Career Fair', when: 'week', desc: 'Thu 1pm-4pm @ Hamming Hall' },
+    { title: 'JV Mens Basketball NPU vs Elmhurst', when: 'week', desc: 'Mon 7pm @ Carlson Tower' },
+    { title: 'Career Fair', when: 'week', desc: 'Thu 1pm–4pm @ Hamming Hall' },
   ];
 
   function drawEvents(filter = 'all') {
@@ -35,6 +59,7 @@ if (eventsList) {
           </div>`;
       });
   }
+
   drawEvents();
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -42,6 +67,7 @@ if (eventsList) {
   });
 }
 
+// --- Dining page: dining locations + open/closed filter ---
 const diningGrid = document.getElementById('diningGrid');
 if (diningGrid) {
   const halls = [
@@ -72,26 +98,10 @@ if (diningGrid) {
           </div>`;
       });
   }
+
   drawDining();
 
   document.querySelectorAll('.dining-filter').forEach(btn => {
     btn.addEventListener('click', () => drawDining(btn.dataset.open));
   });
-}
-
-// -------- External API: Quote of the Day --------
-const quoteEl = document.getElementById('quoteText');
-if (quoteEl) {
-  async function loadQuote() {
-    try {
-      const res = await fetch('https://api.quotable.io/random');
-      const data = await res.json();
-      quoteEl.textContent = `"${data.content}" — ${data.author}`;
-    } catch (err) {
-      quoteEl.textContent = 'Could not load quote right now. Please try again later.';
-      console.error('Quote API error:', err);
-    }
-  }
-
-  loadQuote();
 }
