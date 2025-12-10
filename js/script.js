@@ -16,7 +16,6 @@ async function loadBibleVerse() {
 
 loadBibleVerse();
 
-}
 
 // --- Home: Explore button goes to Events page ---
 const exploreBtn = document.getElementById('exploreBtn');
